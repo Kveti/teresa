@@ -20,5 +20,4 @@
 .idea
 var/cache/*
 var/log/*
-config/services.yaml
 vendor
