@@ -1,0 +1,37 @@
+{% extends 'dashboard_base.html.twig' %}
+
+{% block title %}Reporty {{ project }}{% endblock %}
+
+{% block javascripts %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.rawgit.com/harvesthq/chosen/gh-pages/chosen.jquery.min.js"></script>
+    <link href="https://cdn.rawgit.com/harvesthq/chosen/gh-pages/chosen.min.css" rel="stylesheet"/>
+{% endblock %}
+
+{% block nav %}
+  {% for idx, menu in projects %}
+      <a href="{{ base }}/project/{{ menu }}">{{ menu }}</a>
+  {% endfor %}
+{% endblock %}
+
+
+{% block body %}
+
+
+<div class="main">
+  {% for idx, directory in directories %}
+    <a href="{{ path[idx-2] }}">
+    {% if directory=="logy" %}
+        <img src="{{ asset('img/log.png') }}" alt="logo">
+    {% elseif directory=="reporty" %}
+        <img src="{{ asset('img/reporty.png') }}" alt="logo">
+    {% elseif directory=="poznámky" %}
+        <img src="{{ asset('img/notes.png') }}" alt="logo">
+    {% elseif directory=="scenáre" %}
+        <img src="{{ asset('img/scripts.png') }}" alt="logo">
+    {% endif %}
+    {{ directory }}</a><br />
+  {% endfor %}
+    <a href="{{ base }}/stats/{{ project }}"><img src="{{ asset('img/stats.png') }}" alt="logo">stats</a>
+</div>  
+{% endblock %}

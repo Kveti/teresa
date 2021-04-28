@@ -1,0 +1,1270 @@
+Array
+(
+    [@attributes] => Array
+        (
+            [generator] => Robot 4.0.1 (Python 3.9.4 on win32)
+            [generated] => 20210419 10:34:24.228
+            [rpa] => false
+            [schemaversion] => 2
+        )
+
+    [suite] => Array
+        (
+            [@attributes] => Array
+                (
+                    [id] => s1
+                    [name] => Test-Soic-Bamd
+                    [source] => C:\Users\matov\Documents\testovanie\soic-robot\bamd\test-soic-bamd.robot
+                )
+
+            [test] => Array
+                (
+                    [0] => SimpleXMLElement Object
+                        (
+                            [@attributes] => Array
+                                (
+                                    [id] => s1-t1
+                                    [name] => Start Browser
+                                )
+
+                            [kw] => SimpleXMLElement Object
+                                (
+                                    [@attributes] => Array
+                                        (
+                                            [name] => Setup For Test
+                                        )
+
+                                    [kw] => Array
+                                        (
+                                            [0] => SimpleXMLElement Object
+                                                (
+                                                    [@attributes] => Array
+                                                        (
+                                                            [name] => Open Browser
+                                                            [library] => SeleniumLibrary
+                                                        )
+
+                                                    [arg] => Array
+                                                        (
+                                                            [0] => ${SOIC_url}
+                                                            [1] => Chrome
+                                                        )
+
+                                                    [doc] => Opens a new browser instance to the optional ``url``.
+                                                    [msg] => Opening browser 'Chrome' to base url 'https://soic.develop.maurit.sk/'.
+                                                    [status] => SimpleXMLElement Object
+                                                        (
+                                                            [@attributes] => Array
+                                                                (
+                                                                    [status] => PASS
+                                                                    [starttime] => 20210419 10:34:24.479
+                                                                    [endtime] => 20210419 10:34:26.977
+                                                                )
+
+                                                        )
+
+                                                )
+
+                                            [1] => SimpleXMLElement Object
+                                                (
+                                                    [@attributes] => Array
+                                                        (
+                                                            [name] => Maximize Browser Window
+                                                            [library] => SeleniumLibrary
+                                                        )
+
+                                                    [doc] => Maximizes current browser window.
+                                                    [status] => SimpleXMLElement Object
+                                                        (
+                                                            [@attributes] => Array
+                                                                (
+                                                                    [status] => PASS
+                                                                    [starttime] => 20210419 10:34:26.977
+                                                                    [endtime] => 20210419 10:34:27.123
+                                                                )
+
+                                                        )
+
+                                                )
+
+                                            [2] => SimpleXMLElement Object
+                                                (
+                                                    [@attributes] => Array
+                                                        (
+                                                            [name] => Set Selenium Speed
+                                                            [library] => SeleniumLibrary
+                                                        )
+
+                                                    [arg] => 0.1
+                                                    [doc] => Sets the delay that is waited after each Selenium command.
+                                                    [status] => SimpleXMLElement Object
+                                                        (
+                                                            [@attributes] => Array
+                                                                (
+                                                                    [status] => PASS
+                                                                    [starttime] => 20210419 10:34:27.125
+                                                                    [endtime] => 20210419 10:34:27.127
+                                                                )
+
+                                                        )
+
+                                                )
+
+                                        )
+
+                                    [status] => SimpleXMLElement Object
+                                        (
+                                            [@attributes] => Array
+                                                (
+                                                    [status] => PASS
+                                                    [starttime] => 20210419 10:34:24.479
+                                                    [endtime] => 20210419 10:34:27.128
+                                                )
+
+                                        )
+
+                                )
+
+                            [status] => SimpleXMLElement Object
+                                (
+                                    [@attributes] => Array
+                                        (
+                                            [status] => PASS
+                                            [starttime] => 20210419 10:34:24.478
+                                            [endtime] => 20210419 10:34:27.131
+                                        )
+
+                                )
+
+                        )
+
+                    [1] => SimpleXMLElement Object
+                        (
+                            [@attributes] => Array
+                                (
+                                    [id] => s1-t2
+                                    [name] => Login Jedna
+                                )
+
+                            [kw] => SimpleXMLElement Object
+                                (
+                                    [@attributes] => Array
+                                        (
+                                            [name] => Negative Login SOIC
+                                        )
+
+                                    [kw] => Array
+                                        (
+                                            [0] => SimpleXMLElement Object
+                                                (
+                                                    [@attributes] => Array
+                                                        (
+                                                            [name] => Go To
+                                                            [library] => SeleniumLibrary
+                                                        )
+
+                                                    [arg] => ${soic_url}
+                                                    [doc] => Navigates the current browser window to the provided ``url``.
+                                                    [msg] => Opening url 'https://soic.develop.maurit.sk/'
+                                                    [status] => SimpleXMLElement Object
+                                                        (
+                                                            [@attributes] => Array
+                                                                (
+                                                                    [status] => PASS
+                                                                    [starttime] => 20210419 10:34:27.143
+                                                                    [endtime] => 20210419 10:34:27.497
+                                                                )
+
+                                                        )
+
+                                                )
+
+                                            [1] => SimpleXMLElement Object
+                                                (
+                                                    [@attributes] => Array
+                                                        (
+                                                            [name] => Press Keys
+                                                            [library] => SeleniumLibrary
+                                                        )
+
+                                                    [arg] => Array
+                                                        (
+                                                            [0] => //input[@name="username"]
+                                                            [1] => ${soic_login}
+                                                        )
+
+                                                    [doc] => Simulates the user pressing key(s) to an element or on the active browser.
+                                                    [msg] => Array
+                                                        (
+                                                            [0] => Sending key(s) ('martin.varga@maurit.sk',) to //input[@name="username"] element.
+                                                            [1] => Sending keys martin.varga@maurit.sk
+                                                        )
+
+                                                    [status] => SimpleXMLElement Object
+                                                        (
+                                                            [@attributes] => Array
+                                                                (
+                                                                    [status] => PASS
+                                                                    [starttime] => 20210419 10:34:27.499
+                                                                    [endtime] => 20210419 10:34:28.252
+                                                                )
+
+                                                        )
+
+                                                )
+
+                                            [2] => SimpleXMLElement Object
+                                                (
+                                                    [@attributes] => Array
+                                                        (
+                                                            [name] => Input Password
+                                                            [library] => SeleniumLibrary
+                                                        )
+
+                                                    [arg] => Array
+                                                        (
+                                                            [0] => //input[@name="password"]
+                                                            [1] => blbost
+                                                        )
+
+                                                    [doc] => Types the given password into the text field identified by ``locator``.
+                                                    [msg] => Array
+                                                        (
+                                                            [0] => Typing password into text field '//input[@name="password"]'.
+                                                            [1] => Temporally setting log level to: NONE
+                                                            [2] => Log level changed from NONE to INFO.
+                                                        )
+
+                                                    [status] => SimpleXMLElement Object
+                                                        (
+                                                            [@attributes] => Array
+                                                                (
+                                                                    [status] => PASS
+                                                                    [starttime] => 20210419 10:34:28.252
+                                                                    [endtime] => 20210419 10:34:28.676
+                                                                )
+
+                                                        )
+
+                                                )
+
+                                            [3] => SimpleXMLElement Object
+                                                (
+                                                    [@attributes] => Array
+                                                        (
+                                                            [name] => Click Element
+                                                            [library] => SeleniumLibrary
+                                                        )
+
+                                                    [arg] => //input[@name="login"]
+                                                    [doc] => Click the element identified by ``locator``.
+                                                    [msg] => Clicking element '//input[@name="login"]'.
+                                                    [status] => SimpleXMLElement Object
+                                                        (
+                                                            [@attributes] => Array
+                                                                (
+                                                                    [status] => PASS
+                                                                    [starttime] => 20210419 10:34:28.676
+                                                                    [endtime] => 20210419 10:34:29.385
+                                                                )
+
+                                                        )
+
+                                                )
+
+                                            [4] => SimpleXMLElement Object
+                                                (
+                                                    [@attributes] => Array
+                                                        (
+                                                            [name] => Wait Until Page Contains
+                                                            [library] => SeleniumLibrary
+                                                        )
+
+                                                    [arg] => Nesprávne prihlasovacie údaje.
+                                                    [doc] => Waits until ``text`` appears on the current page.
+                                                    [status] => SimpleXMLElement Object
+                                                        (
+                                                            [@attributes] => Array
+                                                                (
+                                                                    [status] => PASS
+                                                                    [starttime] => 20210419 10:34:29.385
+                                                                    [endtime] => 20210419 10:34:29.513
+                                                                )
+
+                                                        )
+
+                                                )
+
+                                        )
+
+                                    [status] => SimpleXMLElement Object
+                                        (
+                                            [@attributes] => Array
+                                                (
+                                                    [status] => PASS
+                                                    [starttime] => 20210419 10:34:27.139
+                                                    [endtime] => 20210419 10:34:29.514
+                                                )
+
+                                        )
+
+                                )
+
+                            [status] => SimpleXMLElement Object
+                                (
+                                    [@attributes] => Array
+                                        (
+                                            [status] => PASS
+                                            [starttime] => 20210419 10:34:27.136
+                                            [endtime] => 20210419 10:34:29.515
+                                        )
+
+                                )
+
+                        )
+
+                    [2] => SimpleXMLElement Object
+                        (
+                            [@attributes] => Array
+                                (
+                                    [id] => s1-t3
+                                    [name] => Login Dva
+                                )
+
+                            [kw] => SimpleXMLElement Object
+                                (
+                                    [@attributes] => Array
+                                        (
+                                            [name] => Login SOIC
+                                        )
+
+                                    [kw] => Array
+                                        (
+                                            [0] => SimpleXMLElement Object
+                                                (
+                                                    [@attributes] => Array
+                                                        (
+                                                            [name] => Go To
+                                                            [library] => SeleniumLibrary
+                                                        )
+
+                                                    [arg] => ${soic_url}
+                                                    [doc] => Navigates the current browser window to the provided ``url``.
+                                                    [msg] => Opening url 'https://soic.develop.maurit.sk/'
+                                                    [status] => SimpleXMLElement Object
+                                                        (
+                                                            [@attributes] => Array
+                                                                (
+                                                                    [status] => PASS
+                                                                    [starttime] => 20210419 10:34:29.517
+                                                                    [endtime] => 20210419 10:34:29.813
+                                                                )
+
+                                                        )
+
+                                                )
+
+                                            [1] => SimpleXMLElement Object
+                                                (
+                                                    [@attributes] => Array
+                                                        (
+                                                            [name] => Press Keys
+                                                            [library] => SeleniumLibrary
+                                                        )
+
+                                                    [arg] => Array
+                                                        (
+                                                            [0] => //input[@name="username"]
+                                                            [1] => ${soic_login}
+                                                        )
+
+                                                    [doc] => Simulates the user pressing key(s) to an element or on the active browser.
+                                                    [msg] => Array
+                                                        (
+                                                            [0] => Sending key(s) ('martin.varga@maurit.sk',) to //input[@name="username"] element.
+                                                            [1] => Sending keys martin.varga@maurit.sk
+                                                        )
+
+                                                    [status] => SimpleXMLElement Object
+                                                        (
+                                                            [@attributes] => Array
+                                                                (
+                                                                    [status] => PASS
+                                                                    [starttime] => 20210419 10:34:29.813
+                                                                    [endtime] => 20210419 10:34:30.467
+                                                                )
+
+                                                        )
+
+                                                )
+
+                                            [2] => SimpleXMLElement Object
+                                                (
+                                                    [@attributes] => Array
+                                                        (
+                                                            [name] => Input Password
+                                                            [library] => SeleniumLibrary
+                                                        )
+
+                                                    [arg] => Array
+                                                        (
+                                                            [0] => //input[@name="password"]
+                                                            [1] => ${soic_password}
+                                                        )
+
+                                                    [doc] => Types the given password into the text field identified by ``locator``.
+                                                    [msg] => Array
+                                                        (
+                                                            [0] => Typing password into text field '//input[@name="password"]'.
+                                                            [1] => Temporally setting log level to: NONE
+                                                            [2] => Log level changed from NONE to INFO.
+                                                        )
+
+                                                    [status] => SimpleXMLElement Object
+                                                        (
+                                                            [@attributes] => Array
+                                                                (
+                                                                    [status] => PASS
+                                                                    [starttime] => 20210419 10:34:30.467
+                                                                    [endtime] => 20210419 10:34:30.893
+                                                                )
+
+                                                        )
+
+                                                )
+
+                                            [3] => SimpleXMLElement Object
+                                                (
+                                                    [@attributes] => Array
+                                                        (
+                                                            [name] => Click Element
+                                                            [library] => SeleniumLibrary
+                                                        )
+
+                                                    [arg] => //input[@name="login"]
+                                                    [doc] => Click the element identified by ``locator``.
+                                                    [msg] => Clicking element '//input[@name="login"]'.
+                                                    [status] => SimpleXMLElement Object
+                                                        (
+                                                            [@attributes] => Array
+                                                                (
+                                                                    [status] => PASS
+                                                                    [starttime] => 20210419 10:34:30.893
+                                                                    [endtime] => 20210419 10:34:32.212
+                                                                )
+
+                                                        )
+
+                                                )
+
+                                            [4] => SimpleXMLElement Object
+                                                (
+                                                    [@attributes] => Array
+                                                        (
+                                                            [name] => Wait Until Page Contains
+                                                            [library] => SeleniumLibrary
+                                                        )
+
+                                                    [arg] => Vitajte
+                                                    [doc] => Waits until ``text`` appears on the current page.
+                                                    [status] => SimpleXMLElement Object
+                                                        (
+                                                            [@attributes] => Array
+                                                                (
+                                                                    [status] => PASS
+                                                                    [starttime] => 20210419 10:34:32.213
+                                                                    [endtime] => 20210419 10:34:32.338
+                                                                )
+
+                                                        )
+
+                                                )
+
+                                        )
+
+                                    [status] => SimpleXMLElement Object
+                                        (
+                                            [@attributes] => Array
+                                                (
+                                                    [status] => PASS
+                                                    [starttime] => 20210419 10:34:29.517
+                                                    [endtime] => 20210419 10:34:32.338
+                                                )
+
+                                        )
+
+                                )
+
+                            [status] => SimpleXMLElement Object
+                                (
+                                    [@attributes] => Array
+                                        (
+                                            [status] => PASS
+                                            [starttime] => 20210419 10:34:29.516
+                                            [endtime] => 20210419 10:34:32.339
+                                        )
+
+                                )
+
+                        )
+
+                    [3] => SimpleXMLElement Object
+                        (
+                            [@attributes] => Array
+                                (
+                                    [id] => s1-t4
+                                    [name] => Pridaj Bilateralnu Zmluvu
+                                )
+
+                            [kw] => Array
+                                (
+                                    [0] => SimpleXMLElement Object
+                                        (
+                                            [@attributes] => Array
+                                                (
+                                                    [name] => Get Current Date
+                                                    [library] => DateTime
+                                                )
+
+                                            [var] => ${datum}
+                                            [arg] => result_format=%Y-%m-%d
+                                            [doc] => Returns current local or UTC time with an optional increment.
+                                            [msg] => ${datum} = 2021-04-19
+                                            [status] => SimpleXMLElement Object
+                                                (
+                                                    [@attributes] => Array
+                                                        (
+                                                            [status] => PASS
+                                                            [starttime] => 20210419 10:34:32.341
+                                                            [endtime] => 20210419 10:34:32.341
+                                                        )
+
+                                                )
+
+                                        )
+
+                                    [1] => SimpleXMLElement Object
+                                        (
+                                            [@attributes] => Array
+                                                (
+                                                    [name] => Click Element
+                                                    [library] => SeleniumLibrary
+                                                )
+
+                                            [arg] => //html/body/div[1]/div[2]/div/a[1]/div
+                                            [doc] => Click the element identified by ``locator``.
+                                            [msg] => Clicking element '//html/body/div[1]/div[2]/div/a[1]/div'.
+                                            [status] => SimpleXMLElement Object
+                                                (
+                                                    [@attributes] => Array
+                                                        (
+                                                            [status] => PASS
+                                                            [starttime] => 20210419 10:34:32.342
+                                                            [endtime] => 20210419 10:34:33.311
+                                                        )
+
+                                                )
+
+                                        )
+
+                                    [2] => SimpleXMLElement Object
+                                        (
+                                            [@attributes] => Array
+                                                (
+                                                    [name] => Click Element
+                                                    [library] => SeleniumLibrary
+                                                )
+
+                                            [arg] => //html/body/div[2]/div[2]/div[1]/div/a[2]
+                                            [doc] => Click the element identified by ``locator``.
+                                            [msg] => Clicking element '//html/body/div[2]/div[2]/div[1]/div/a[2]'.
+                                            [status] => SimpleXMLElement Object
+                                                (
+                                                    [@attributes] => Array
+                                                        (
+                                                            [status] => PASS
+                                                            [starttime] => 20210419 10:34:33.314
+                                                            [endtime] => 20210419 10:34:34.066
+                                                        )
+
+                                                )
+
+                                        )
+
+                                    [3] => SimpleXMLElement Object
+                                        (
+                                            [@attributes] => Array
+                                                (
+                                                    [name] => Press Keys
+                                                    [library] => SeleniumLibrary
+                                                )
+
+                                            [arg] => Array
+                                                (
+                                                    [0] => //input[@name="name"]
+                                                    [1] => bilateralka - ${datum}
+                                                )
+
+                                            [doc] => Simulates the user pressing key(s) to an element or on the active browser.
+                                            [msg] => Array
+                                                (
+                                                    [0] => Sending key(s) ('bilateralka - 2021-04-19',) to //input[@name="name"] element.
+                                                    [1] => Sending keys bilateralka - 2021-04-19
+                                                )
+
+                                            [status] => SimpleXMLElement Object
+                                                (
+                                                    [@attributes] => Array
+                                                        (
+                                                            [status] => PASS
+                                                            [starttime] => 20210419 10:34:34.068
+                                                            [endtime] => 20210419 10:34:34.975
+                                                        )
+
+                                                )
+
+                                        )
+
+                                    [4] => SimpleXMLElement Object
+                                        (
+                                            [@attributes] => Array
+                                                (
+                                                    [name] => Press Keys
+                                                    [library] => SeleniumLibrary
+                                                )
+
+                                            [arg] => Array
+                                                (
+                                                    [0] => //input[@name="name_partner"]
+                                                    [1] => bilateralka partnera - ${datum}
+                                                )
+
+                                            [doc] => Simulates the user pressing key(s) to an element or on the active browser.
+                                            [msg] => Array
+                                                (
+                                                    [0] => Sending key(s) ('bilateralka partnera - 2021-04-19',) to //input[@name="name_partner"] element.
+                                                    [1] => Sending keys bilateralka partnera - 2021-04-19
+                                                )
+
+                                            [status] => SimpleXMLElement Object
+                                                (
+                                                    [@attributes] => Array
+                                                        (
+                                                            [status] => PASS
+                                                            [starttime] => 20210419 10:34:34.977
+                                                            [endtime] => 20210419 10:34:35.901
+                                                        )
+
+                                                )
+
+                                        )
+
+                                    [5] => SimpleXMLElement Object
+                                        (
+                                            [@attributes] => Array
+                                                (
+                                                    [name] => Select From List By Label
+                                                    [library] => SeleniumLibrary
+                                                )
+
+                                            [arg] => Array
+                                                (
+                                                    [0] => //select[@name="country[n1]"]
+                                                    [1] => Česká republika
+                                                )
+
+                                            [doc] => Selects options from selection list ``locator`` by ``labels``.
+                                            [msg] => Selecting options from selection list '//select[@name="country[n1]"]' by label Česká republika.
+                                            [status] => SimpleXMLElement Object
+                                                (
+                                                    [@attributes] => Array
+                                                        (
+                                                            [status] => PASS
+                                                            [starttime] => 20210419 10:34:35.903
+                                                            [endtime] => 20210419 10:34:36.908
+                                                        )
+
+                                                )
+
+                                        )
+
+                                    [6] => SimpleXMLElement Object
+                                        (
+                                            [@attributes] => Array
+                                                (
+                                                    [name] => Click Element
+                                                    [library] => SeleniumLibrary
+                                                )
+
+                                            [arg] => //html/body/div[2]/div[2]/div[2]/div/form/fieldset/table/tbody[6]/tr[2]/td[2]/div/ul
+                                            [doc] => Click the element identified by ``locator``.
+                                            [msg] => Clicking element '//html/body/div[2]/div[2]/div[2]/div/form/fieldset/table/tbody[6]/tr[2]/td[2]/div/ul'.
+                                            [status] => SimpleXMLElement Object
+                                                (
+                                                    [@attributes] => Array
+                                                        (
+                                                            [status] => PASS
+                                                            [starttime] => 20210419 10:34:36.911
+                                                            [endtime] => 20210419 10:34:37.249
+                                                        )
+
+                                                )
+
+                                        )
+
+                                    [7] => SimpleXMLElement Object
+                                        (
+                                            [@attributes] => Array
+                                                (
+                                                    [name] => Click Element
+                                                    [library] => SeleniumLibrary
+                                                )
+
+                                            [arg] => //html/body/div[2]/div[2]/div[2]/div/form/fieldset/table/tbody[6]/tr[2]/td[2]/div/div/ul/li[3]
+                                            [doc] => Click the element identified by ``locator``.
+                                            [msg] => Clicking element '//html/body/div[2]/div[2]/div[2]/div/form/fieldset/table/tbody[6]/tr[2]/td[2]/div/div/ul/li[3]'.
+                                            [status] => SimpleXMLElement Object
+                                                (
+                                                    [@attributes] => Array
+                                                        (
+                                                            [status] => PASS
+                                                            [starttime] => 20210419 10:34:37.249
+                                                            [endtime] => 20210419 10:34:37.545
+                                                        )
+
+                                                )
+
+                                        )
+
+                                    [8] => SimpleXMLElement Object
+                                        (
+                                            [@attributes] => Array
+                                                (
+                                                    [name] => Click Element
+                                                    [library] => SeleniumLibrary
+                                                )
+
+                                            [arg] => //input[@name="save"]
+                                            [doc] => Click the element identified by ``locator``.
+                                            [msg] => Clicking element '//input[@name="save"]'.
+                                            [status] => SimpleXMLElement Object
+                                                (
+                                                    [@attributes] => Array
+                                                        (
+                                                            [status] => PASS
+                                                            [starttime] => 20210419 10:34:37.547
+                                                            [endtime] => 20210419 10:34:38.325
+                                                        )
+
+                                                )
+
+                                        )
+
+                                )
+
+                            [status] => SimpleXMLElement Object
+                                (
+                                    [@attributes] => Array
+                                        (
+                                            [status] => PASS
+                                            [starttime] => 20210419 10:34:32.340
+                                            [endtime] => 20210419 10:34:38.327
+                                        )
+
+                                )
+
+                        )
+
+                    [4] => SimpleXMLElement Object
+                        (
+                            [@attributes] => Array
+                                (
+                                    [id] => s1-t5
+                                    [name] => Skontroluj Bilateralnu Zmluvu
+                                )
+
+                            [kw] => Array
+                                (
+                                    [0] => SimpleXMLElement Object
+                                        (
+                                            [@attributes] => Array
+                                                (
+                                                    [name] => Get Current Date
+                                                    [library] => DateTime
+                                                )
+
+                                            [var] => ${datum}
+                                            [arg] => result_format=%Y-%m-%d
+                                            [doc] => Returns current local or UTC time with an optional increment.
+                                            [msg] => ${datum} = 2021-04-19
+                                            [status] => SimpleXMLElement Object
+                                                (
+                                                    [@attributes] => Array
+                                                        (
+                                                            [status] => PASS
+                                                            [starttime] => 20210419 10:34:38.331
+                                                            [endtime] => 20210419 10:34:38.332
+                                                        )
+
+                                                )
+
+                                        )
+
+                                    [1] => SimpleXMLElement Object
+                                        (
+                                            [@attributes] => Array
+                                                (
+                                                    [name] => Click Element
+                                                    [library] => SeleniumLibrary
+                                                )
+
+                                            [arg] => //html/body/div[1]/div[2]/div/a[1]/div
+                                            [doc] => Click the element identified by ``locator``.
+                                            [msg] => Clicking element '//html/body/div[1]/div[2]/div/a[1]/div'.
+                                            [status] => SimpleXMLElement Object
+                                                (
+                                                    [@attributes] => Array
+                                                        (
+                                                            [status] => PASS
+                                                            [starttime] => 20210419 10:34:38.332
+                                                            [endtime] => 20210419 10:34:39.188
+                                                        )
+
+                                                )
+
+                                        )
+
+                                    [2] => SimpleXMLElement Object
+                                        (
+                                            [@attributes] => Array
+                                                (
+                                                    [name] => Set Variable
+                                                    [library] => BuiltIn
+                                                )
+
+                                            [var] => ${meno}
+                                            [arg] => bilateralka - ${datum}
+                                            [doc] => Returns the given values which can then be assigned to a variables.
+                                            [msg] => ${meno} = bilateralka - 2021-04-19
+                                            [status] => SimpleXMLElement Object
+                                                (
+                                                    [@attributes] => Array
+                                                        (
+                                                            [status] => PASS
+                                                            [starttime] => 20210419 10:34:39.189
+                                                            [endtime] => 20210419 10:34:39.189
+                                                        )
+
+                                                )
+
+                                        )
+
+                                    [3] => SimpleXMLElement Object
+                                        (
+                                            [@attributes] => Array
+                                                (
+                                                    [name] => Set Variable
+                                                    [library] => BuiltIn
+                                                )
+
+                                            [var] => ${meno_partnera}
+                                            [arg] => bilateralka partnera - ${datum}
+                                            [doc] => Returns the given values which can then be assigned to a variables.
+                                            [msg] => ${meno_partnera} = bilateralka partnera - 2021-04-19
+                                            [status] => SimpleXMLElement Object
+                                                (
+                                                    [@attributes] => Array
+                                                        (
+                                                            [status] => PASS
+                                                            [starttime] => 20210419 10:34:39.190
+                                                            [endtime] => 20210419 10:34:39.190
+                                                        )
+
+                                                )
+
+                                        )
+
+                                    [4] => SimpleXMLElement Object
+                                        (
+                                            [@attributes] => Array
+                                                (
+                                                    [name] => Get Element Attribute
+                                                    [library] => SeleniumLibrary
+                                                )
+
+                                            [var] => ${inner}
+                                            [arg] => Array
+                                                (
+                                                    [0] => //html/body/div[2]/div[2]/div[2]/table/tbody[1]/tr[2]/td[2]/a
+                                                    [1] => attribute=innerHTML
+                                                )
+
+                                            [doc] => Returns the value of ``attribute`` from the element ``locator``.
+                                            [msg] => ${inner} = bilateralka - 2021-04-19<br>bilateralka partnera - 2021-04-19
+                                            [status] => SimpleXMLElement Object
+                                                (
+                                                    [@attributes] => Array
+                                                        (
+                                                            [status] => PASS
+                                                            [starttime] => 20210419 10:34:39.191
+                                                            [endtime] => 20210419 10:34:39.437
+                                                        )
+
+                                                )
+
+                                        )
+
+                                    [5] => SimpleXMLElement Object
+                                        (
+                                            [@attributes] => Array
+                                                (
+                                                    [name] => Should Be Equal As Strings
+                                                    [library] => BuiltIn
+                                                )
+
+                                            [arg] => Array
+                                                (
+                                                    [0] => bilateralka - ${datum}<br>bilateralka partnera - ${datum}
+                                                    [1] => ${inner}
+                                                )
+
+                                            [doc] => Fails if objects are unequal after converting them to strings.
+                                            [status] => SimpleXMLElement Object
+                                                (
+                                                    [@attributes] => Array
+                                                        (
+                                                            [status] => PASS
+                                                            [starttime] => 20210419 10:34:39.439
+                                                            [endtime] => 20210419 10:34:39.440
+                                                        )
+
+                                                )
+
+                                        )
+
+                                    [6] => SimpleXMLElement Object
+                                        (
+                                            [@attributes] => Array
+                                                (
+                                                    [name] => Get Element Attribute
+                                                    [library] => SeleniumLibrary
+                                                )
+
+                                            [var] => ${inner}
+                                            [arg] => Array
+                                                (
+                                                    [0] => //html/body/div[2]/div[2]/div[2]/table/tbody[1]/tr[2]/td[3]
+                                                    [1] => attribute=innerHTML
+                                                )
+
+                                            [doc] => Returns the value of ``attribute`` from the element ``locator``.
+                                            [msg] => ${inner} = <img src="/images/blank.gif" class="flag flag-cz" alt=""> Česká republika<br>
+                                            [status] => SimpleXMLElement Object
+                                                (
+                                                    [@attributes] => Array
+                                                        (
+                                                            [status] => PASS
+                                                            [starttime] => 20210419 10:34:39.442
+                                                            [endtime] => 20210419 10:34:39.750
+                                                        )
+
+                                                )
+
+                                        )
+
+                                    [7] => SimpleXMLElement Object
+                                        (
+                                            [@attributes] => Array
+                                                (
+                                                    [name] => Should Be Equal As Strings
+                                                    [library] => BuiltIn
+                                                )
+
+                                            [arg] => Array
+                                                (
+                                                    [0] => <img src="/images/blank.gif" class="flag flag-cz" alt=""> Česká republika<br>
+                                                    [1] => ${inner}
+                                                )
+
+                                            [doc] => Fails if objects are unequal after converting them to strings.
+                                            [status] => SimpleXMLElement Object
+                                                (
+                                                    [@attributes] => Array
+                                                        (
+                                                            [status] => PASS
+                                                            [starttime] => 20210419 10:34:39.752
+                                                            [endtime] => 20210419 10:34:39.754
+                                                        )
+
+                                                )
+
+                                        )
+
+                                    [8] => SimpleXMLElement Object
+                                        (
+                                            [@attributes] => Array
+                                                (
+                                                    [name] => Element Should Contain
+                                                    [library] => SeleniumLibrary
+                                                )
+
+                                            [arg] => Array
+                                                (
+                                                    [0] => //html/body/div[2]/div[2]/div[2]/table/tbody[1]/tr[2]/td[5]
+                                                    [1] => -
+                                                )
+
+                                            [doc] => Verifies that element ``locator`` contains text ``expected``.
+                                            [msg] => Element '//html/body/div[2]/div[2]/div[2]/table/tbody[1]/tr[2]/td[5]' contains text '-'.
+                                            [status] => SimpleXMLElement Object
+                                                (
+                                                    [@attributes] => Array
+                                                        (
+                                                            [status] => PASS
+                                                            [starttime] => 20210419 10:34:39.756
+                                                            [endtime] => 20210419 10:34:40.078
+                                                        )
+
+                                                )
+
+                                        )
+
+                                    [9] => SimpleXMLElement Object
+                                        (
+                                            [@attributes] => Array
+                                                (
+                                                    [name] => Element Should Contain
+                                                    [library] => SeleniumLibrary
+                                                )
+
+                                            [arg] => Array
+                                                (
+                                                    [0] => //html/body/div[2]/div[2]/div[2]/table/tbody[1]/tr[2]/td[8]
+                                                    [1] => rozpracovaná
+                                                )
+
+                                            [doc] => Verifies that element ``locator`` contains text ``expected``.
+                                            [msg] => Element '//html/body/div[2]/div[2]/div[2]/table/tbody[1]/tr[2]/td[8]' contains text 'rozpracovaná'.
+                                            [status] => SimpleXMLElement Object
+                                                (
+                                                    [@attributes] => Array
+                                                        (
+                                                            [status] => PASS
+                                                            [starttime] => 20210419 10:34:40.081
+                                                            [endtime] => 20210419 10:34:40.374
+                                                        )
+
+                                                )
+
+                                        )
+
+                                    [10] => SimpleXMLElement Object
+                                        (
+                                            [@attributes] => Array
+                                                (
+                                                    [name] => Get Element Attribute
+                                                    [library] => SeleniumLibrary
+                                                )
+
+                                            [var] => ${inner}
+                                            [arg] => Array
+                                                (
+                                                    [0] => //html/body/div[2]/div[2]/div[2]/table/tbody[1]/tr[2]/td[6]
+                                                    [1] => attribute=innerHTML
+                                                )
+
+                                            [doc] => Returns the value of ``attribute`` from the element ``locator``.
+                                            [msg] => ${inner} = 19.04.2021 10:34
+                                            [status] => SimpleXMLElement Object
+                                                (
+                                                    [@attributes] => Array
+                                                        (
+                                                            [status] => PASS
+                                                            [starttime] => 20210419 10:34:40.375
+                                                            [endtime] => 20210419 10:34:40.641
+                                                        )
+
+                                                )
+
+                                        )
+
+                                    [11] => SimpleXMLElement Object
+                                        (
+                                            [@attributes] => Array
+                                                (
+                                                    [name] => Get Current Date
+                                                    [library] => DateTime
+                                                )
+
+                                            [var] => ${datum}
+                                            [arg] => result_format=%d.%m.%Y
+                                            [doc] => Returns current local or UTC time with an optional increment.
+                                            [msg] => ${datum} = 19.04.2021
+                                            [status] => SimpleXMLElement Object
+                                                (
+                                                    [@attributes] => Array
+                                                        (
+                                                            [status] => PASS
+                                                            [starttime] => 20210419 10:34:40.642
+                                                            [endtime] => 20210419 10:34:40.643
+                                                        )
+
+                                                )
+
+                                        )
+
+                                    [12] => SimpleXMLElement Object
+                                        (
+                                            [@attributes] => Array
+                                                (
+                                                    [name] => Get Substring
+                                                    [library] => String
+                                                )
+
+                                            [var] => ${inner2}
+                                            [arg] => Array
+                                                (
+                                                    [0] => ${inner}
+                                                    [1] => 0
+                                                    [2] => 10
+                                                )
+
+                                            [doc] => Returns a substring from ``start`` index to ``end`` index.
+                                            [msg] => ${inner2} = 19.04.2021
+                                            [status] => SimpleXMLElement Object
+                                                (
+                                                    [@attributes] => Array
+                                                        (
+                                                            [status] => PASS
+                                                            [starttime] => 20210419 10:34:40.644
+                                                            [endtime] => 20210419 10:34:40.645
+                                                        )
+
+                                                )
+
+                                        )
+
+                                    [13] => SimpleXMLElement Object
+                                        (
+                                            [@attributes] => Array
+                                                (
+                                                    [name] => Should Be Equal As Strings
+                                                    [library] => BuiltIn
+                                                )
+
+                                            [arg] => Array
+                                                (
+                                                    [0] => ${inner2}
+                                                    [1] => ${datum}
+                                                )
+
+                                            [doc] => Fails if objects are unequal after converting them to strings.
+                                            [status] => SimpleXMLElement Object
+                                                (
+                                                    [@attributes] => Array
+                                                        (
+                                                            [status] => PASS
+                                                            [starttime] => 20210419 10:34:40.646
+                                                            [endtime] => 20210419 10:34:40.647
+                                                        )
+
+                                                )
+
+                                        )
+
+                                )
+
+                            [status] => SimpleXMLElement Object
+                                (
+                                    [@attributes] => Array
+                                        (
+                                            [status] => PASS
+                                            [starttime] => 20210419 10:34:38.330
+                                            [endtime] => 20210419 10:34:40.648
+                                        )
+
+                                )
+
+                        )
+
+                )
+
+            [kw] => Array
+                (
+                    [@attributes] => Array
+                        (
+                            [name] => Close Browsers
+                            [type] => TEARDOWN
+                        )
+
+                    [kw] => Array
+                        (
+                            [@attributes] => Array
+                                (
+                                    [name] => Close All Browsers
+                                    [library] => SeleniumLibrary
+                                )
+
+                            [doc] => Closes all open browsers and resets the browser cache.
+                            [status] => Array
+                                (
+                                    [@attributes] => Array
+                                        (
+                                            [status] => PASS
+                                            [starttime] => 20210419 10:34:40.652
+                                            [endtime] => 20210419 10:34:43.015
+                                        )
+
+                                )
+
+                        )
+
+                    [status] => Array
+                        (
+                            [@attributes] => Array
+                                (
+                                    [status] => PASS
+                                    [starttime] => 20210419 10:34:40.651
+                                    [endtime] => 20210419 10:34:43.016
+                                )
+
+                        )
+
+                )
+
+            [status] => Array
+                (
+                    [@attributes] => Array
+                        (
+                            [status] => PASS
+                            [starttime] => 20210419 10:34:24.238
+                            [endtime] => 20210419 10:34:43.016
+                        )
+
+                )
+
+        )
+
+    [statistics] => Array
+        (
+            [total] => Array
+                (
+                    [stat] => All Tests
+                )
+
+            [tag] => Array
+                (
+                )
+
+            [suite] => Array
+                (
+                    [stat] => Test-Soic-Bamd
+                )
+
+        )
+
+    [errors] => Array
+        (
+        )
+
+)

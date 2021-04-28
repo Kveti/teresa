@@ -1,0 +1,67 @@
+{% extends 'dashboard_base.html.twig' %}
+
+{% block title %}Štatistika | {{ project}} {% endblock %}
+{% block javascripts %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://cdn.rawgit.com/harvesthq/chosen/gh-pages/chosen.jquery.min.js"></script>
+<link href="https://cdn.rawgit.com/harvesthq/chosen/gh-pages/chosen.min.css" rel="stylesheet"/>
+{% endblock %}
+{% block stylesheets %}
+    <style>
+        body {
+            font-size: 20px;
+        }
+        #posledny_mesiac {
+            background: #e0e040;
+        }
+        #medzera_v_tabulke {
+            height: 20px;
+        }
+        table {
+            padding-top: 20px;
+            padding-left: 100px;
+        }
+    </style>
+{% endblock %}
+{% block nav %}
+    {% for idx, menu in projects %}
+        <a href="{{ base }}/project/{{ menu }}">{{ menu }}</a>
+    {% endfor %}
+{% endblock %}
+
+{% block body %}
+
+<div id="pole">
+    <table>
+        <th>
+            <tr>
+                <td> Rok </td> <td> Mesiac </td> <td> Úspešné testy </td> <td> Všetky testy </td>
+            </tr>
+        </th>
+        <tr id="posledny_mesiac">
+            {% for udaj in posledny_mesiac %}
+                <td>{{ udaj }}</td>
+            {% endfor %}
+        </tr>
+        <tr id="medzera_v_tabulke">
+            <td></td><td></td><td></td><td></td>
+        </tr>
+    {% for znenie_roka,rok in stats %}
+            {% for znenie_mesiaca, mesiac in rok %}
+                <tr>
+                    <td>{{ znenie_roka }}</td>
+                    <td>{{ znenie_mesiaca }}</td>
+                    <td>{{ mesiac.pass }}</td>
+                    <td>{{ mesiac.all }}</td>
+                </tr>
+            {% endfor %}
+    {% endfor %}
+        <tr>
+            <td> Sumár </td>
+            <td></td>
+            <td>{{ pass_dokopy }}</td>
+            <td>{{ testy_dokopy }}</td>
+        </tr>
+    </table>
+</div>
+{% endblock %}

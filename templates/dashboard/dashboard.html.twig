@@ -1,0 +1,21 @@
+{% extends 'dashboard_base.html.twig' %}
+
+{% block title %}Reporty{% endblock %}
+
+
+{% block nav %}
+  {% for menu in projects %}
+      <a href="{{ base }}/project/{{ menu }}"">{{ menu }}</a>
+  {% endfor %}
+{% endblock %}
+
+
+{% block body %}
+
+<div class="main">
+  <h2>Projekty</h2>
+  {% for project in projects %}
+    <a href="{{ base }}/project/{{ project }}"><img src="{{ asset('img/project.svg') }}" alt="logo"><span>{{ project }}</span></a><br/>
+  {% endfor %}
+</div>  
+{% endblock %}

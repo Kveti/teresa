@@ -1,0 +1,33 @@
+{% extends 'dashboard_base.html.twig' %}
+
+{% block title %}Logy | {{ project }}{% endblock %}
+
+{% block javascripts %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.rawgit.com/harvesthq/chosen/gh-pages/chosen.jquery.min.js"></script>
+    <link href="https://cdn.rawgit.com/harvesthq/chosen/gh-pages/chosen.min.css" rel="stylesheet"/>
+{% endblock %}
+
+{% block nav %}
+    {% for idx, menu in projects %}
+        <a href="{{ base }}/project/{{ menu }}">{{ menu }}</a>
+    {% endfor %}
+{% endblock %}
+
+{% block body %}
+
+    <div class="main">
+        {{ form(logs_form) }}
+    </div>
+
+    <script>
+        var nodesSnapshot = document.evaluate("//input", document, null, XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, null );
+        for ( var i=0 ; i < nodesSnapshot.snapshotLength; i++ ){
+            nodesSnapshot.snapshotItem(i).style.height = "30px";
+            nodesSnapshot.snapshotItem(i).style.display = "block";
+            nodesSnapshot.snapshotItem(i).style.marginTop = "20px";
+            nodesSnapshot.snapshotItem(i).checked = false;
+        }
+        document.getElementById("form_submit").style.marginTop = "30px";
+    </script>
+{% endblock %}
