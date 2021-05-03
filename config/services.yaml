@@ -5,6 +5,7 @@
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
   base_url: '%env(resolve:BASE_URL)%'
+  project_path: '%env(resolve:PROJECT_PATH)%'
 
 services:
     # default configuration for services in *this* file
