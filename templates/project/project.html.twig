@@ -20,13 +20,15 @@
 
 <div class="main">
   {% for idx, directory in directories %}
-    <a href="{{ path[idx-2] }}">
+    <a href="{{ path[idx] }}">
     {% if directory=="logy" %}
         <img src="{{ asset('img/log.png') }}" alt="logo">
     {% elseif directory=="reporty" %}
         <img src="{{ asset('img/reporty.png') }}" alt="logo">
     {% elseif directory=="poznámky" %}
         <img src="{{ asset('img/notes.png') }}" alt="logo">
+    {% elseif directory=="automatické" %}
+        <img src="{{ asset('img/src.png') }}" alt="src">
     {% elseif directory=="scenáre" %}
         <img src="{{ asset('img/scripts.png') }}" alt="logo">
     {% endif %}

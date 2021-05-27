@@ -18,10 +18,11 @@ class ProjectController extends AbstractController
         $base = $this->getParameter('base_url');
         $user = $security->getUser();
         $name = $user->getName() . " " . $user->getSurname();
-        $projekty = array_diff(scandir(__DIR__ . "/../../results/"), array('..', '.'));
+        $path = $this->getParameter('project_path');
+        $projekty = array_diff(scandir($path), array('..', '.'));
+        $directories = array_diff(scandir($path . DIRECTORY_SEPARATOR . $project_name ), array('..', '.', 'automaticke'));
+        $directories = array_values($directories);
         $path = array();
-
-        $directories = array_diff(scandir(__DIR__ . "/../../results/" . $project_name ), array('..', '.'));
         foreach ($directories as $directory)
         {
             if($directory == "logy")
@@ -50,12 +51,11 @@ class ProjectController extends AbstractController
     {
 
         $base = $this->getParameter('base_url');
+        $path = $this->getParameter('project_path');
         $user = $security->getUser();
         $name = $user->getName() . " " . $user->getSurname();
-        //$path = __DIR__ . "/../../results/" . $subdir;
-        //$file = readfile($path);
-        $projekty = array_diff(scandir(__DIR__ . "/../../results/"), array('..', '.'));
-        $files = array_diff(scandir(__DIR__ . "/../../results/" . $project_name . "/" . $dir), array('..', '.'));
+        $projekty = array_diff(scandir($path), array('..', '.'));
+        $files = array_diff(scandir($path . DIRECTORY_SEPARATOR . $project_name . DIRECTORY_SEPARATOR . $dir), array('..', '.'));
         return $this->render('project/view.html.twig', [
             'username' => $name,
             'projects' => $projekty,
@@ -64,31 +64,15 @@ class ProjectController extends AbstractController
             'project' => $project_name,
             'dir' => $dir,
         ]);
-        //$path = __DIR__ . "/../../results/portalvs/logy/2020Februar/log-20200913-022802.html";
-        //$file = readfile($path);
-        //return new Response($file);
     }
     /**
      * @Route("/view/{project_name}/{dir}/{file}", name="app_view_file", requirements={"dir"="scenáre|poznámky"})
      */
     public function view_file(Security $security, Request $request, String $project_name, String $dir, String $file): Response
     {
-        //$base = "http://localhost/reporty5W2/public/index.php";
-        //$user = $security->getUser();
-        //$name = $user->getName() . " " . $user->getSurname();
-        ////$path = __DIR__ . "/../../results/" . $subdir;
-        ////$file = readfile($path);
-        //$projekty = array_diff(scandir(__DIR__ . "/../../results/"), array('..', '.'));
-        //$files = array_diff(scandir(__DIR__ . "/../../results/" . $project_name . "/" . $dir), array('..', '.'));
-        //return $this->render('project/view.html.twig', [
-        //    'username' => $name,
-        //    'projects' => $projekty,
-        //    'files' => $files,
-        //    'base' => $base,
-        //    'project' => $project_name,
-        //]);
-        $path = __DIR__ . "/../../results/" . $project_name . "/" . $dir . "/" . $file;
-        $file = readfile($path);
+        $path = $this->getParameter('project_path');
+        $final_path = $path . DIRECTORY_SEPARATOR . $project_name . DIRECTORY_SEPARATOR . $dir . DIRECTORY_SEPARATOR . $file;
+        $file = readfile($final_path);
         return new Response($file);
     }
 }

@@ -24,9 +24,11 @@ class LogsController extends AbstractController
         $base = $this->getParameter('base_url');
         $user = $security->getUser();
         $name = $user->getName() . " " . $user->getSurname();
-        $projekty = array_diff(scandir(__DIR__ . "/../../results/"), array('..', '.'));
+        $path = $this->getParameter('project_path');
 
-        $logy = array_diff(scandir(__DIR__ . "/../../results/" . $project_name . "/logy/"), array('..', '.', 'merge'));
+        $projekty = array_diff(scandir($path), array('..', '.'));
+
+        $logy = array_diff(scandir($path . DIRECTORY_SEPARATOR . $project_name . DIRECTORY_SEPARATOR . "logy"), array('..', '.', 'merge'));
         $mena_mesiacov = array("01" => "Január", "02" => "Február", "03" => "Marec", "04" => "Apríl", "05" => "Máj", "06" => "Jún", "07" => "Júl", "08" => "August", "09" => "September", "10" => "Október", "11" => "November", "12" => "December");
         $cisla_mesiacov = array("Január" => "01", "Február" => "02", "Marec" => "03", "Apríl" => "04", "Máj" => "05", "Jún" => "06", "Júl" => "07", "August" => "O8", "September" => "09", "Október" => "10", "November" => "11", "December" => "12");
 
@@ -35,6 +37,10 @@ class LogsController extends AbstractController
         {
             $mesiace[$log] = substr($log, 0, 4) . " " . $mena_mesiacov[substr($log, 5)];
         }
+
+        //$em = $this->getDoctrine()->getManager();
+        //$query = $em->createQuery("Select * from results");
+
 
         return $this->render('logs/logs.html.twig', [
             'username' => $name,
@@ -51,12 +57,17 @@ class LogsController extends AbstractController
     public function logs_month(Security $security, String $project_name, String $month, Request $request): Response
     {
         $base = $this->getParameter('base_url');
+        $path = $this->getParameter('project_path');
         $user = $security->getUser();
         $name = $user->getName() . " " . $user->getSurname();
-        //$path = __DIR__ . "/../../results/" . $subdir;
-        //$file = readfile($path);
-        $projekty = array_diff(scandir(__DIR__ . "/../../results/"), array('..', '.'));
-        $files = array_diff(scandir(__DIR__ . "/../../results/" . $project_name . "/logy/" . $month), array('..', '.'));
+        $projekty = array_diff(scandir($path), array('..', '.'));
+        $files = array_diff(scandir($path . DIRECTORY_SEPARATOR . $project_name . DIRECTORY_SEPARATOR . "logy" . DIRECTORY_SEPARATOR . $month), array('..', '.'));
+
+        foreach ($files as $file)
+        {
+
+        }
+
         return $this->render('logs/month.html.twig', [
             'username' => $name,
             'projects' => $projekty,
@@ -72,8 +83,9 @@ class LogsController extends AbstractController
      */
     public function logs_view(Security $security, String $project_name, String $month, String $file, Request $request): Response
     {
-        $path = __DIR__ . "/../../results/" . $project_name . "/logy/" . $month . "/" . $file;
-        $file = readfile($path);
+        $path = $this->getParameter('project_path');
+        $final_path = $path . DIRECTORY_SEPARATOR . $project_name . DIRECTORY_SEPARATOR . "logy" . DIRECTORY_SEPARATOR . $month . DIRECTORY_SEPARATOR . $file;
+        $file = readfile($final_path);
         return new Response($file);
     }
 

@@ -20,11 +20,12 @@ class ReportsController extends AbstractController
     public function logs(Security $security, String $project_name, Request $request): Response
     {
         $base = $this->getParameter('base_url');
+        $path = $this->getParameter('project_path');
         $user = $security->getUser();
         $name = $user->getName() . " " . $user->getSurname();
-        $projekty = array_diff(scandir(__DIR__ . "/../../results/"), array('..', '.'));
+        $projekty = array_diff(scandir($path), array('..', '.'));
 
-        $logy = array_diff(scandir(__DIR__ . "/../../results/" . $project_name . "/logy/"), array('..', '.', 'merge'));
+        $logy = array_diff(scandir($path . "/" . $project_name . "/logy/"), array('..', '.', 'merge'));
         $mena_mesiacov = array("01" => "Január", "02" => "Február", "03" => "Marec", "04" => "Apríl", "05" => "Máj", "06" => "Jún", "07" => "Júl", "08" => "August", "09" => "September", "10" => "Október", "11" => "November", "12" => "December");
         $cisla_mesiacov = array("Január" => "01", "Február" => "02", "Marec" => "03", "Apríl" => "04", "Máj" => "05", "Jún" => "06", "Júl" => "07", "August" => "O8", "September" => "09", "Október" => "10", "November" => "11", "December" => "12");
 
@@ -84,11 +85,12 @@ class ReportsController extends AbstractController
     public function logs_month(Security $security, String $project_name, String $month, Request $request): Response
     {
         $subdir = $request->query->get('subdir');
+        $path = $this->getParameter('project_path');
         $logy = $request->query->get('log2');
         $base = $this->getParameter('base_url');
         $user = $security->getUser();
         $name = $user->getName() . " " . $user->getSurname();
-        $projekty = array_diff(scandir(__DIR__ . "/../../results/"), array('..', '.'));
+        $projekty = array_diff(scandir($path), array('..', '.'));
         $vopchacik = "";
         if ($subdir == "logy")
         {
@@ -97,7 +99,7 @@ class ReportsController extends AbstractController
         $path = array();
         if (isset($subdir))
         {
-            $directories = array_diff(scandir(__DIR__ . "/../../results/" . $project_name . "/" . $subdir), array('..', '.'));
+            $directories = array_diff(scandir($path . DIRECTORY_SEPARATOR . $project_name . DIRECTORY_SEPARATOR . $subdir), array('..', '.'));
             $content = array("con" => array(), "path" => array());
             foreach ($directories as $directory)
             {
@@ -109,7 +111,7 @@ class ReportsController extends AbstractController
                 }
             }
         } else {
-            $directories = array_diff(scandir(__DIR__ . "/../../results/" . $project_name ), array('..', '.'));
+            $directories = array_diff(scandir($path . DIRECTORY_SEPARATOR . $project_name ), array('..', '.'));
             foreach ($directories as $directory)
             {
                 if(strpos($directory, "html"))
