@@ -63,15 +63,19 @@ class LogsController extends AbstractController
         $projekty = array_diff(scandir($path), array('..', '.'));
         $files = array_diff(scandir($path . DIRECTORY_SEPARATOR . $project_name . DIRECTORY_SEPARATOR . "logy" . DIRECTORY_SEPARATOR . $month), array('..', '.'));
 
+        $logs = array();
         foreach ($files as $file)
         {
-
+            if (strpos($file, "log")===0)
+            {
+                $logs[] = $file;
+            }
         }
 
         return $this->render('logs/month.html.twig', [
             'username' => $name,
             'projects' => $projekty,
-            'files' => $files,
+            'files' => $logs,
             'base' => $base,
             'project' => $project_name,
             'mesiac' => $month,

@@ -20,20 +20,28 @@
 
 <div class="main">
   {% for idx, directory in directories %}
+    {% set vypis = true %}
     <a href="{{ path[idx] }}">
     {% if directory=="logy" %}
         <img src="{{ asset('img/log.png') }}" alt="logo">
     {% elseif directory=="reporty" %}
         <img src="{{ asset('img/reporty.png') }}" alt="logo">
-    {% elseif directory=="poznámky" %}
+    {% elseif directory=="poznámky" or directory=="poznamky" %}
         <img src="{{ asset('img/notes.png') }}" alt="logo">
-    {% elseif directory=="automatické" %}
+    {% elseif directory=="automatické" or directory=="automaticke" %}
         <img src="{{ asset('img/src.png') }}" alt="src">
-    {% elseif directory=="scenáre" %}
+        {% set directory = "zdrojové kódy" %}
+    {% elseif directory=="scenáre" or directory=="scenare" %}
         <img src="{{ asset('img/scripts.png') }}" alt="logo">
+    {% else %}
+        {% set vypis = false %}
     {% endif %}
-    {{ directory }}</a><br />
+    {% if vypis %}
+        {{ directory }}</a><br /><br />
+    {% endif %}
   {% endfor %}
-    <a href="{{ base }}/stats/{{ project }}"><img src="{{ asset('img/stats.png') }}" alt="logo">stats</a>
-</div>  
+    <a href="{{ base }}/stats/{{ project }}"><img src="{{ asset('img/stats.png') }}" alt="stats">stats</a><br /><br />
+    <a href="{{ base }}/reports/{{ project }}"><img src="{{ asset('img/reports.jpg') }}" alt="reports">reporty</a>
+</div> 
+
 {% endblock %}

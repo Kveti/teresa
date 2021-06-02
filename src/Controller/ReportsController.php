@@ -17,7 +17,7 @@ class ReportsController extends AbstractController
     /**
      * @Route("/reports/{project_name}", name="app_reports")
      */
-    public function logs(Security $security, String $project_name, Request $request): Response
+    public function reports(Security $security, String $project_name, Request $request): Response
     {
         $base = $this->getParameter('base_url');
         $path = $this->getParameter('project_path');
@@ -69,7 +69,7 @@ class ReportsController extends AbstractController
             }
         }
 
-        return $this->render('logs/logs.html.twig', [
+        return $this->render('reports/reports.html.twig', [
             'username' => $name,
             'projects' => $projekty,
             'project' => $project_name,

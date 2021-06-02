@@ -7,6 +7,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Security;
+use App\Service\DirCrowler;
+use ZipArchive;
 
 class ProjectController extends AbstractController
 {
@@ -20,7 +22,7 @@ class ProjectController extends AbstractController
         $name = $user->getName() . " " . $user->getSurname();
         $path = $this->getParameter('project_path');
         $projekty = array_diff(scandir($path), array('..', '.'));
-        $directories = array_diff(scandir($path . DIRECTORY_SEPARATOR . $project_name ), array('..', '.', 'automaticke'));
+        $directories = array_diff(scandir($path . DIRECTORY_SEPARATOR . $project_name ), array('..', '.'));
         $directories = array_values($directories);
         $path = array();
         foreach ($directories as $directory)
@@ -30,6 +32,8 @@ class ProjectController extends AbstractController
                 $path[] = $base . "/logs/" . $project_name;
             } else if($directory == "stats") {
                 $path[] = $base . "/stats/" . $project_name;
+            } else if($directory == "automaticke" || $directory == "automatické") {
+                $path[] = $base . "/src/" . $project_name;
             } else {
                 $path[] = $base . "/view/" . $project_name . "/" . $directory;
             }
@@ -74,5 +78,50 @@ class ProjectController extends AbstractController
         $final_path = $path . DIRECTORY_SEPARATOR . $project_name . DIRECTORY_SEPARATOR . $dir . DIRECTORY_SEPARATOR . $file;
         $file = readfile($final_path);
         return new Response($file);
+    }
+    /**
+     * @Route("/src/{project_name}", name="app_src")
+     */
+    public function src_project(Security $security, Request $request, String $project_name): Response
+    {
+        $path = $this->getParameter('project_path');
+        $project_path = $path . DIRECTORY_SEPARATOR . $project_name;
+        $dirs = array_diff(scandir($project_path), array('..', '.'));
+
+        //$key = array_search("automatické", $dirs); 
+        //$in = in_array("automatické", $dirs);
+        if (in_array("automaticke", $dirs))
+        {
+            $src_path = $path . DIRECTORY_SEPARATOR . $project_name . DIRECTORY_SEPARATOR . "automaticke";
+        }
+        else if(in_array("automatické", $dirs))
+        {
+            $src_path = $path . DIRECTORY_SEPARATOR . $project_name . DIRECTORY_SEPARATOR . "automatické";
+        }
+        //foreach ($dirs as $dir)
+        //{
+        //    if($dir=="automatické" || $dir=="automaticke")
+        //    {
+        //        $src_path = $path . DIRECTORY_SEPARATOR . $project_name . DIRECTORY_SEPARATOR . $dir;
+        //        break;
+        //    }
+        //}
+        $files = DirCrowler::scanuj_dir($src_path);
+        $zip_name = $path . DIRECTORY_SEPARATOR . $project_name . DIRECTORY_SEPARATOR . $project_name . '_src.zip';
+        if(file_exists($zip_name)) {
+            unlink ($zip_name);
+        }
+        $zip = new ZipArchive;
+        $zip->open($zip_name, ZipArchive::CREATE);
+        foreach($files as $file)
+        {
+            $zip->addFile($src_path . DIRECTORY_SEPARATOR . $file, $file);
+        }
+        $zip->close();
+        $response = new Response(readfile($zip_name));
+        $response->headers->set('Content-Type', 'application/zip');
+        $response->headers->set('Content-disposition', 'filename="' . $project_name . '_src.zip"');
+        $response->headers->set('Content-length', filesize($zip_name));
+        return $response;
     }
 }
