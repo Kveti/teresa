@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Reporty{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {# Run `composer require symfony/webpack-encore-bundle`
+           and uncomment the following Encore helpers to start using Symfony UX #}
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/navbar.css') }}">
+    {% block stylesheets %}
+        {#{{ encore_entry_link_tags('app') }}#}
+        <style>
+            body {
+                font-family: "Lato", sans-serif;
+                #background: linear-gradient(to left, #76b852, #8DC26F);
+            }
+        </style>
+
+    {% endblock %}
+
+    {% block javascripts %}
+        {#{{ encore_entry_script_tags('app') }}#}
+    {% endblock %}
+
+</head>
+<body>
+<div class="navbar">
+    <a href="{{ base }}/dashboard" style="background-color: #333">{{ username }}</a>
+    <div class="dropdown">
+        <button class="dropbtn">Projekty
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+            <!--div class="header">
+                <h2>Projekty</h2>
+            </div-->
+            <div class="row">
+                <div class="column">
+                    <!--h3>Category 1</h3-->
+                    {% for idx, menu in projects %}
+                        <a href="{{ base }}/project/{{ menu }}">{{ menu }}</a>
+                    {% endfor %}
+                </div>
+                <div class="column">
+                    <h3></h3>
+                    <a href="#"></a>
+                    <a href="#"></a>
+                    <a href="#"></a>
+                </div>
+                <div class="column">
+                    <h3></h3>
+                    <a href="#"></a>
+                    <a href="#"></a>
+                    <a href="#"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a href="{{path('app_logout') }}">Logout</a>
+</div>
+
+<div class="main">
+    {{ subor|raw }}
+</div>
+
+{% block body %}{% endblock %}
+</body>
+</html>

@@ -117,10 +117,25 @@ class ProjectController extends AbstractController
      */
     public function view_file(Security $security, Request $request, String $project_name, String $dir, String $file): Response
     {
+        $base = $this->getParameter('base_url');
         $path = $this->getParameter('project_path');
+        $user = $security->getUser();
+        $name = $user->getName() . " " . $user->getSurname();
+        $projekty = array_diff(scandir($path), array('..', '.'));
+
         $final_path = $path . DIRECTORY_SEPARATOR . $project_name . DIRECTORY_SEPARATOR . $dir . DIRECTORY_SEPARATOR . $file;
-        $file = readfile($final_path);
-        return new Response($file);
+        $file = file_get_contents($final_path);
+        //$head = readfile(__DIR__ . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR . "templates" . DIRECTORY_SEPARATOR . "project" . DIRECTORY_SEPARATOR . "head.html");
+        //$foot = readfile(__DIR__ . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR . "templates" . DIRECTORY_SEPARATOR . "project" . DIRECTORY_SEPARATOR . "foot.html");
+        //return new Response($file);
+        return $this->render('project/view_file.html.twig', [
+            'username' => $name,
+            'projects' => $projekty,
+            'base' => $base,
+            'project' => $project_name,
+            'dir' => $dir,
+            'subor' => $file,
+        ]);
     }
     /**
      * @Route("/src/{project_name}", name="app_src")
