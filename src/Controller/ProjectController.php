@@ -15,7 +15,7 @@ class ProjectController extends AbstractController
     /**
      * @Route("/project/{project_name}", name="app_project")
      */
-    public function project(Security $security, String $project_name, Request $request): Response
+    public function project(Security $security, String $project_name, Request $request, \Doctrine\DBAL\Connection $connection): Response
     {
         $base = $this->getParameter('base_url');
         $user = $security->getUser();
@@ -25,6 +25,48 @@ class ProjectController extends AbstractController
         $directories = array_diff(scandir($path . DIRECTORY_SEPARATOR . $project_name ), array('..', '.'));
         $directories = array_values($directories);
         $path = array();
+
+        $sql = '
+            SELECT CAST(test_datetime AS DATE) date, sum(cases_failed) F, sum(cases_passed) P 
+            FROM results 
+            WHERE test_name LIKE :project 
+            AND (date(test_datetime) = curdate()
+            OR date(test_datetime) = SUBDATE(curdate(), INTERVAL 1 DAY)
+            OR date(test_datetime) = SUBDATE(curdate(), INTERVAL 2 DAY))
+            GROUP BY CAST(test_datetime AS DATE);
+            ';
+        $stmt = $connection->prepare($sql);
+        $stmt->execute(['project' => $project_name . "%"]);
+        // returns an array of arrays (i.e. a raw data set)
+        $log_s = $stmt->fetchAllAssociative(); // ✅  ❌
+        $log_0 = "";
+        $log_1 = "";
+        $log_2 = "";
+        if (isset($log_s[2]))
+        {
+            if ($log_s[2]["P"] > 0)
+            {
+                $log_2 = $log_s[2]["F"] == 0 ? "✔" : "❌";
+            }
+        }
+        if (isset($log_s[1]))
+        {
+            if ($log_s[1]["P"] > 0)
+            {
+                $log_1 = $log_s[1]["F"] == 0 ? "✔" : "❌";
+            }
+        }
+        if (isset($log_s[0]))
+        {
+            if ($log_s[0]["P"] > 0)
+            {
+                $log_0 = $log_s[0]["F"] == 0 ? "✔" : "❌";
+            }
+        }
+        $logs_status = "logy " . $log_0 . "  " . $log_1 . "  " . $log_2;
+         
+
+
         foreach ($directories as $directory)
         {
             if($directory == "logy")
@@ -46,6 +88,7 @@ class ProjectController extends AbstractController
             'project' => $project_name,
             'base' => $base,
             'path' => $path,
+            'logs_status' => $logs_status,
         ]);
     }
     /**
@@ -67,6 +110,7 @@ class ProjectController extends AbstractController
             'base' => $base,
             'project' => $project_name,
             'dir' => $dir,
+            'logs_status' => $logs_status,
         ]);
     }
     /**

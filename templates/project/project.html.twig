@@ -23,6 +23,7 @@
     {% set vypis = true %}
     <a href="{{ path[idx] }}">
     {% if directory=="logy" %}
+        {% set directory = logs_status %}
         <img src="{{ asset('img/log.png') }}" alt="logo">
     {% elseif directory=="reporty" %}
         <img src="{{ asset('img/reporty.png') }}" alt="logo">

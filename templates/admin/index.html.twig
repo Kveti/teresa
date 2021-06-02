@@ -16,5 +16,14 @@
         <li>Your controller at <code><a href="{{ 'C:/Users/matov/Documents/web/teresa/src/Controller/AdminController.php'|file_link(0) }}">src/Controller/AdminController.php</a></code></li>
         <li>Your template at <code><a href="{{ 'C:/Users/matov/Documents/web/teresa/templates/admin/index.html.twig'|file_link(0) }}">templates/admin/index.html.twig</a></code></li>
     </ul>
+
+    {% for idx, item in pole %}
+        <p>prve: {{ idx }} <p>
+            {% for id2, subItem in item %}
+                <p>{{ id2 }} => {{ subItem }}</p>
+            {% endfor %}
+    {% endfor %}
+
+
 </div>
 {% endblock %}
