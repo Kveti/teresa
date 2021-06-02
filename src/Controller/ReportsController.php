@@ -11,6 +11,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Security;
+use ZipArchive;
+use App\Service\DirCrowler;
 
 class ReportsController extends AbstractController
 {
@@ -60,13 +62,37 @@ class ReportsController extends AbstractController
             ->getForm();
 
         $logs_form->handleRequest($request);
-        $vysledok = array();
+        $monthsToMerge = array();
         if ($logs_form->isSubmitted() && $logs_form->isValid())
         {
             foreach($logs->getMonths() as $month)
             {
-                $vysledok[] = $month;
+                $words = explode(" ", $month);
+                $monthsToMerge[] = $words[0] . "_" . $cisla_mesiacov[$words[1]];
             }
+
+            $zip_name = $path . DIRECTORY_SEPARATOR . $project_name . DIRECTORY_SEPARATOR . $project_name . '_reporty.zip';
+            if(file_exists($zip_name)) {
+                unlink ($zip_name);
+            }
+            $zip = new ZipArchive;
+            $zip->open($zip_name, ZipArchive::CREATE);
+            foreach($monthsToMerge as $oneMonthToMerge)
+            {
+                $filesForZip = DirCrowler::scanuj_dir($path . DIRECTORY_SEPARATOR . $project_name . DIRECTORY_SEPARATOR . "logy" . DIRECTORY_SEPARATOR . $oneMonthToMerge);
+                foreach($filesForZip as $file)
+                {
+                    $zip->addFile($path . DIRECTORY_SEPARATOR . $project_name . DIRECTORY_SEPARATOR . "logy" . DIRECTORY_SEPARATOR . $oneMonthToMerge . DIRECTORY_SEPARATOR . $file, $oneMonthToMerge . DIRECTORY_SEPARATOR . $file);
+                }
+            }
+            $zip->close();
+            $response = new Response(file_get_contents($zip_name));
+            $response->headers->set('Content-Type', 'application/zip');
+            $response->headers->set('Content-disposition', 'filename="' . $project_name . '_reporty.zip"');
+            $response->headers->set('Content-length', filesize($zip_name));
+            return $response;
+
+
         }
 
         return $this->render('reports/reports.html.twig', [
@@ -82,7 +108,7 @@ class ReportsController extends AbstractController
     /**
      * @Route("/reports/{project_name}/{month}", name="app_repoorts_month")
      */
-    public function logs_month(Security $security, String $project_name, String $month, Request $request): Response
+    public function reports_month(Security $security, String $project_name, String $month, Request $request): Response
     {
         $subdir = $request->query->get('subdir');
         $path = $this->getParameter('project_path');
