@@ -110,7 +110,6 @@ class ProjectController extends AbstractController
             'base' => $base,
             'project' => $project_name,
             'dir' => $dir,
-            'logs_status' => $logs_status,
         ]);
     }
     /**
