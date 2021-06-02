@@ -32,7 +32,7 @@ class AdminController extends AbstractController
         // returns an array of arrays (i.e. a raw data set)
         $pole = $stmt->fetchAllAssociative(); // ✅
 
-        return $this->render('admin/index.html.twig', [
+        return $this->render('admin/admin.html.twig', [
             'controller_name' => 'AdminController',
             'pole' => $pole,
         ]);
