@@ -21,7 +21,7 @@ class StatsController extends AbstractController
         $name = $user->getName() . " " . $user->getSurname();
 
         $stats = array();
-        $projekty = array_diff(scandir($path), array('..', '.', 'Downloads'));
+        $projekty = array_diff(scandir($path), array('..', '.', 'Downloads', 'global_assets'));
         $mesiace = array_diff(scandir($path . DIRECTORY_SEPARATOR . $project . DIRECTORY_SEPARATOR . "logy"), array(".", "..", "merge"));
 
         $mena_mesiacov = array("01" => "Január", "02" => "Február", "03" => "Marec", "04" => "Apríl", "05" => "Máj", "06" => "Jún", "07" => "Júl", "08" => "August", "09" => "September", "10" => "Október", "11" => "November", "12" => "December");

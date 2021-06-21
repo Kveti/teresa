@@ -25,7 +25,7 @@ class ReportsController extends AbstractController
         $path = $this->getParameter('project_path');
         $user = $security->getUser();
         $name = $user->getName() . " " . $user->getSurname();
-        $projekty = array_diff(scandir($path), array('..', '.', 'Downloads'));
+        $projekty = array_diff(scandir($path), array('..', '.', 'Downloads', 'global_assets'));
 
         $logy = array_diff(scandir($path . "/" . $project_name . "/logy/"), array('..', '.', 'merge'));
         $mena_mesiacov = array("01" => "Január", "02" => "Február", "03" => "Marec", "04" => "Apríl", "05" => "Máj", "06" => "Jún", "07" => "Júl", "08" => "August", "09" => "September", "10" => "Október", "11" => "November", "12" => "December");
@@ -114,7 +114,7 @@ class ReportsController extends AbstractController
         $base = $this->getParameter('base_url');
         $user = $security->getUser();
         $name = $user->getName() . " " . $user->getSurname();
-        $projekty = array_diff(scandir($path), array('..', '.', 'Downloads'));
+        $projekty = array_diff(scandir($path), array('..', '.', 'Downloads', 'global_assets'));
         $vopchacik = "";
         if ($subdir == "logy")
         {

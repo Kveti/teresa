@@ -20,7 +20,7 @@ class DashboardController extends AbstractController
         $path = $this->getParameter('project_path');
         $user = $security->getUser();
         $name = $user->getName() . " " . $user->getSurname();
-        $projekty = array_diff(scandir($path), array('..', '.', 'Downloads'));
+        $projekty = array_diff(scandir($path), array('..', '.', 'Downloads', 'global_assets'));
         return $this->render('dashboard/dashboard.html.twig', [
             'username' => $name,
             'projects' => $projekty,
