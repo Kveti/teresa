@@ -26,7 +26,7 @@ class LogsController extends AbstractController
         $name = $user->getName() . " " . $user->getSurname();
         $path = $this->getParameter('project_path');
 
-        $projekty = array_diff(scandir($path), array('..', '.'));
+        $projekty = array_diff(scandir($path), array('..', '.', 'Downloads'));
 
         $logy = array_diff(scandir($path . DIRECTORY_SEPARATOR . $project_name . DIRECTORY_SEPARATOR . "logy"), array('..', '.', 'merge'));
         $mena_mesiacov = array("01" => "Január", "02" => "Február", "03" => "Marec", "04" => "Apríl", "05" => "Máj", "06" => "Jún", "07" => "Júl", "08" => "August", "09" => "September", "10" => "Október", "11" => "November", "12" => "December");
@@ -60,7 +60,7 @@ class LogsController extends AbstractController
         $path = $this->getParameter('project_path');
         $user = $security->getUser();
         $name = $user->getName() . " " . $user->getSurname();
-        $projekty = array_diff(scandir($path), array('..', '.'));
+        $projekty = array_diff(scandir($path), array('..', '.', 'Downloads'));
         $files = array_diff(scandir($path . DIRECTORY_SEPARATOR . $project_name . DIRECTORY_SEPARATOR . "logy" . DIRECTORY_SEPARATOR . $month . DIRECTORY_SEPARATOR . "webapp"), array('..', '.'));
 
         $logs = array();

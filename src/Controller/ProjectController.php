@@ -21,7 +21,7 @@ class ProjectController extends AbstractController
         $user = $security->getUser();
         $name = $user->getName() . " " . $user->getSurname();
         $path = $this->getParameter('project_path');
-        $projekty = array_diff(scandir($path), array('..', '.'));
+        $projekty = array_diff(scandir($path), array('..', '.', 'Downloads'));
         $directories = array_diff(scandir($path . DIRECTORY_SEPARATOR . $project_name ), array('..', '.'));
         $directories = array_values($directories);
         $path = array();
@@ -101,7 +101,7 @@ class ProjectController extends AbstractController
         $path = $this->getParameter('project_path');
         $user = $security->getUser();
         $name = $user->getName() . " " . $user->getSurname();
-        $projekty = array_diff(scandir($path), array('..', '.'));
+        $projekty = array_diff(scandir($path), array('..', '.', 'Downloads'));
         $files = array_diff(scandir($path . DIRECTORY_SEPARATOR . $project_name . DIRECTORY_SEPARATOR . $dir), array('..', '.'));
         return $this->render('project/view.html.twig', [
             'username' => $name,
@@ -121,7 +121,7 @@ class ProjectController extends AbstractController
         $path = $this->getParameter('project_path');
         $user = $security->getUser();
         $name = $user->getName() . " " . $user->getSurname();
-        $projekty = array_diff(scandir($path), array('..', '.'));
+        $projekty = array_diff(scandir($path), array('..', '.', 'Downloads'));
 
         $final_path = $path . DIRECTORY_SEPARATOR . $project_name . DIRECTORY_SEPARATOR . $dir . DIRECTORY_SEPARATOR . $file;
         $file = file_get_contents($final_path);
