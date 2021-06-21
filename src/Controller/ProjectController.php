@@ -92,7 +92,7 @@ class ProjectController extends AbstractController
         ]);
     }
     /**
-     * @Route("/view/{project_name}/{dir}", name="app_view", requirements={"dir"="scenáre|poznámky"})
+     * @Route("/view/{project_name}/{dir}", name="app_view", requirements={"dir"="scenáre|scenare|poznámky|poznamky"})
      */
     public function view(Security $security, Request $request, String $project_name, String $dir): Response
     {
@@ -113,7 +113,7 @@ class ProjectController extends AbstractController
         ]);
     }
     /**
-     * @Route("/view/{project_name}/{dir}/{file}", name="app_view_file", requirements={"dir"="scenáre|poznámky"})
+     * @Route("/view/{project_name}/{dir}/{file}", name="app_view_file", requirements={"dir"="scenáre|scenare|poznámky|poznamky"})
      */
     public function view_file(Security $security, Request $request, String $project_name, String $dir, String $file): Response
     {
