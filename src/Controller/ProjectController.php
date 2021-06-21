@@ -176,7 +176,7 @@ class ProjectController extends AbstractController
             $zip->addFile($src_path . DIRECTORY_SEPARATOR . $file, $file);
         }
         $zip->close();
-        $response = new Response(readfile($zip_name));
+        $response = new Response(file_get_contents($zip_name));
         $response->headers->set('Content-Type', 'application/zip');
         $response->headers->set('Content-disposition', 'filename="' . $project_name . '_src.zip"');
         $response->headers->set('Content-length', filesize($zip_name));

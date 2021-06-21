@@ -37,12 +37,12 @@ class StatsController extends AbstractController
             $pass = 0;
             $vsetci = 0;
             // nacitam zoznam dni
-            $dni = scandir($path . DIRECTORY_SEPARATOR . $project . DIRECTORY_SEPARATOR . "logy" . DIRECTORY_SEPARATOR . $mesiac);
+            $dni = scandir($path . DIRECTORY_SEPARATOR . $project . DIRECTORY_SEPARATOR . "logy" . DIRECTORY_SEPARATOR . $mesiac . DIRECTORY_SEPARATOR . "webapp");
             foreach($dni as $den)
             {
                 if (strpos($den, "output") === 0)
                 {
-                    $xml_path = $path . DIRECTORY_SEPARATOR . $project . DIRECTORY_SEPARATOR . "logy" . DIRECTORY_SEPARATOR . $mesiac . DIRECTORY_SEPARATOR . $den;
+                    $xml_path = $path . DIRECTORY_SEPARATOR . $project . DIRECTORY_SEPARATOR . "logy" . DIRECTORY_SEPARATOR . $mesiac . DIRECTORY_SEPARATOR . "webapp" . DIRECTORY_SEPARATOR . $den;
                     $vsetci += $this->pocet_testov($xml_path);
                     $pass += $this->pocet_uspesnych($xml_path);
                 }

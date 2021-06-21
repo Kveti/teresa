@@ -61,7 +61,7 @@ class LogsController extends AbstractController
         $user = $security->getUser();
         $name = $user->getName() . " " . $user->getSurname();
         $projekty = array_diff(scandir($path), array('..', '.'));
-        $files = array_diff(scandir($path . DIRECTORY_SEPARATOR . $project_name . DIRECTORY_SEPARATOR . "logy" . DIRECTORY_SEPARATOR . $month), array('..', '.'));
+        $files = array_diff(scandir($path . DIRECTORY_SEPARATOR . $project_name . DIRECTORY_SEPARATOR . "logy" . DIRECTORY_SEPARATOR . $month . DIRECTORY_SEPARATOR . "webapp"), array('..', '.'));
 
         $logs = array();
         foreach ($files as $file)
